@@ -1,0 +1,60 @@
+// ===========================================
+// functions 関数
+// ===========================================
+
+/* Only output numerical values
+/* 数値のみ出力する
+====================================== */
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}
+
+// ========================================
+// variables 変数一覧
+// ========================================
+/* font $size
+====================================== */
+$font-size-default: 16px;
+
+/* font family
+====================================== */
+$font-family-icon: 'FontAwesome', FontAwesome;
+$font-family-base: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+$font-family-mincho: 'Yu Mincho', 'YuMincho', 'Hiragino Mincho ProN', "MS PMincho", 'Noto Serif JP', serif;
+
+/* Break point ブレイクポイント
+====================================== */
+// min-width
+$breakpoint-up: (
+  's': 481px,
+  'm': 769px,
+  'l': 960px,
+) !default;
+
+// max-width → minから1px減らす
+$breakpoint-down: () !default;
+@each $tag, $size in $breakpoint-up {
+  $breakpoint-down: map-merge($breakpoint-down, (#{$tag}: $size - 1));
+}
+
+
+/* max site width コンテンツ最大幅
+====================================== */
+$max-width-s: 480px;
+$max-width-m: 768px;
+$max-width-l: 960px;
+
+/* colors 色管理
+====================================== */
+$colors: (
+  text: #000000, 
+  main: #E4E4E4,
+  sub: #C09C56,
+  white: #fff,
+
+  // sns colors
+  line: #06C755,
+) !default;

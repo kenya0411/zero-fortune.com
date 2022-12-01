@@ -1,0 +1,149 @@
+// ===========================================
+// header
+// ===========================================
+
+/* #header
+====================================== */
+#header {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    position: sticky;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    height: 90px;
+    background-color: rgba(255, 255,255, 0.85);
+}
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* parts
+--------------------------------- */
+
+/* #header-logo
+--------------------------------- */
+#header-logo {
+    height: 50px;
+    margin: 0;
+    img {
+        height: 50px;
+    }
+}
+
+/* hamburger-menu
+--------------------------------- */
+#hamburger-menu {
+    span {
+        display: block;
+        background-color: #000;
+        height: 2px;
+        width: 30px;
+        + span {
+            margin-top: 10px;
+        }
+    }
+    @include mq-up('m'){
+        display: none;
+    }
+}
+
+#offcanvas {
+    background-color: rgba(255, 255,255, 0.85);
+    width: 100%;
+    z-index: 100;
+    transform: translateX(100vw);
+    &.in {
+        transform: translateX(0);
+        transition: 0.6s ease-in-out;
+        transition-delay: .1s;
+    }
+    &.out {
+    }
+}
+
+/* .header-btn
+--------------------------------- */
+.header-btn {
+    @include mq-up('s'){
+        display: flex;
+    }
+    @include mq-down('m'){
+        justify-content: center;
+    }
+    &.pc {
+        @include mq-down('m'){
+            display: none;
+        }
+    }
+    li {
+        @include mq-down('s'){
+            margin: 0 auto;
+        }
+        + li {
+            @include mq-up('s'){
+                padding-left: 17px;
+            }
+            @include mq-down('s'){
+                padding-top: 17px;
+            }
+        }
+    } 
+    a {
+        display: block;
+        padding: .6em 1em;
+        box-sizing: border-box;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        white-space: nowrap;
+        @include font(18);
+        @include mq-up('s'){
+            width: 200px;
+        }
+        &::before {
+            content: '';
+            display: block;
+            background-repeat: no-repeat;
+            padding-right: 0.2em;
+        }
+        &.contact {
+            background-color: #815F23;
+            &::before {
+                background-image: image-set( url(../../img/common/ico_cart.png) 1x, url(../../img/common/ico_cart@2x.png) 2x);
+                width: 31px;
+                height: 24px;
+            }
+            &:hover {
+                border: 1px solid #815F23;
+                background-color: #fff;
+                color: #815F23;
+                &::before {
+                    background-image: image-set( url(../../img/common/ico_cart_brown_01.png) 1x, url(../../img/common/ico_cart_brown_01@2x.png) 2x);
+                }
+            }
+        }
+        &.line {
+            background-color: map-get($colors, line);
+            &::before {
+                background-image: image-set( url(../../img/common/ico_line.png) 1x, url(../../img/common/ico_line@2x.png) 2x);
+                width: 32px;
+                height: 29px;
+            }
+            &:hover {
+                border: 1px solid map-get($colors, line);
+                background-color: #fff;
+                color: map-get($colors, line);
+                &::before {
+                    background-image: image-set( url(../../img/common/ico_line_green.png) 1x, url(../../img/common/ico_line_green@2x.png) 2x);
+                }
+            }
+        }
+    }
+}

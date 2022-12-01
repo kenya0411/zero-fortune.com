@@ -1,0 +1,44 @@
+// ===========================================
+// footer
+// ===========================================
+/* #footer
+====================================== */
+#footer {
+	padding-top: 21.5px;
+	padding-bottom: 21.5px;
+	background-color: #000;
+	@include mq-up('m'){
+		padding-top: 43px;
+		padding-bottom: 43px;
+	}
+}
+.footer-wrapper {
+	@include mq-up('s'){
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	text-align: center;
+	
+}
+/* footer-logo
+====================================== */
+#footer-logo {
+	img {
+		width: 207px;
+
+	}
+	@include mq-down('s'){
+		margin-bottom: 1.5em;
+	}
+}
+
+/* .copyright
+--------------------------------- */
+.copyright {
+	display: block;
+	color: white;
+	@include mq-down('m'){
+		@include font(16);
+	}
+}
